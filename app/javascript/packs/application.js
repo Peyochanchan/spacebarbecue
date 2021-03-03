@@ -28,7 +28,21 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener("turbolinks:load", function() {
+  initSweetalert('#sweet-alert-demo', {
+  title: "DELETE THIS ITEM ???",
+  text: "Are You out of your fridging Mind ?",
+  buttons: {
+    cancel: true,
+    confirm: "YES DO IT",
+  },
+  icon: "warning"
+  }, (value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
   // Call your functions here, e.g:
   // initSelect2();
 });
