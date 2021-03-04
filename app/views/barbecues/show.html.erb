@@ -1,7 +1,7 @@
 <div class="container d-flex justify-content-center">
   <div class="col-6 offset-3">
     <h1> <%= @barbecue.title %> </h1>
-<%= cl_image_tag("#{@barbecue.picture.key}", alt: "Barbecue", style: "object-fit: cover;") %>
+<%= cl_image_tag("#{@barbecue.photo.key}", alt: "Barbecue", style: "object-fit: cover;") %>
     <h6><%= @barbecue.description %> </h6>
     <h6><%= @barbecue.price %> €</h6>
   </div>
