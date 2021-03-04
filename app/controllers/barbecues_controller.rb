@@ -2,6 +2,7 @@
 
 # :nodoc:
 class BarbecuesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @barbecues = Barbecues.all
   end
@@ -15,6 +16,7 @@ class BarbecuesController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:id])
     @barbecue = Barbecue.new(barbecue_params)
     if barbecue.save
       redirect_to barbecue_path(@barbecue)

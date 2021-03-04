@@ -7,8 +7,7 @@ Rails.application.routes.draw do
       post :search
     end
   end
-  resources :users, only: %i[new create] do
-    resources :barbecues, only: :index
-  end
+  resources :users, only: %i[new create]
   resources :locations, only: %i[index create update]
+  get 'users/:id/booking/', to: 'barbecues#booking', as: :booking
 end
