@@ -1,38 +1,40 @@
-
+<div class="babouchka text-white">
+  <h1>WELCOME TO</h1>
+  <h1>THE SPACE BARBECUE</h1>
+</div>
 <div class="container">
-  <div class="container text-align">
-    <%= image_tag "Space_barbecue.jpg", width:100 %>
-    <h1 class="text-center"> Barbecues location</h1>
+    <div class="container text-align">
+    <h1 class="text-center"> Louez votre espace de Barbecue en famille ou entre amis, entre particuliers ou professionnels</h1>
   </div>
-    <div class="row justify-content-between">
-      <div class="card-body col-4 border border-light shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
-        <p class="text-center">
-          <%= image_tag "espacebarbecue.jpg", width:350 %>
-        </p>
-        <h5 class="card-title">Barbecue et jardin</h5>
-        <p class="card-text">Espace de jeux inclus</p>
-        <div class="card-body col border border-light">
-          <a class="text-decoration-none text-wrap text-white"><%= link_to 'Show', class: "btn btn-primary" %></a>
-        <p class="text-decoration-none"><%= link_to 'Delete', method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
-        </div>
-      </div>
-    </div>
+  <div class="d-flex row justify-content-center">
+    <%= image_tag "Space_barbecue.jpg" %>
+  </div>
 
-    <div class="row justify-content-between">
-      <div class="card-body col-4 border border-light shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
-        <p class="text-center">
-          <%= image_tag "barbecue_gaz-triton_6_1_pts_-1099-1520503175.jpg", width:350 %>
-        </p>
-        <h5 class="card-title">Barbecue seul</h5>
-        <p class="card-text">Gaz ou électrique</p>
-        <div class="card-body col border border-light">
-          <a class="text-decoration-none text-wrap text-white"><%= link_to 'Show', class: "btn btn-primary" %></a>
+  <div class="row justify-content-between">
+    <div class="card-body col-4 border border-light shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+      <p class="text-center">
+        <%= image_tag "espacebarbecue.jpg", width:350 %>
+      </p>
+      <h5 class="card-title">Barbecue et jardin</h5>
+      <p class="card-text">Espace de jeux inclus</p>
+      <div class="card-body col border border-light">
+        <a class="text-decoration-none text-wrap text-white"><%= link_to 'Show', class: "btn btn-primary" %></a>
         <p class="text-decoration-none"><%= link_to 'Delete', method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
-        </div>
       </div>
     </div>
   </div>
-
-
-
+  <div class="row justify-content-between">
+    <div class="card-body col-4 border border-light shadow p-3 mb-5 bg-body rounded" style="width: 18rem;">
+      <p class="text-center">
+        <%= image_tag "barbecue_gaz-triton_6_1_pts_-1099-1520503175.jpg", width:350 %>
+      </p>
+      <h5 class="card-title">Barbecue seul</h5>
+      <p class="card-text">Gaz ou électrique</p>
+      <div class="card-body col border border-light">
+        <a class="text-decoration-none text-wrap text-white"><%= link_to 'Show', class: "btn btn-primary" %></a>
+        <p class="text-decoration-none"><%= link_to 'Delete', method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
+      </div>
+    </div>
+  </div>
+</div>
 <p>Find me in app/views/pages/home.html.erb</p>

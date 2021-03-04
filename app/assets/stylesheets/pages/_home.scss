@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+.babouchka {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  color: #eee;
+  background-image: url("https://caloriecontrol.org/wp-content/uploads/sucralose.orgAdobeStock_84650550-9a6817b03580e9c5e9da0dc47d3c3c7d0b402ac6.jpeg");
+  border-radius: 5px;
+  background-size: cover;
+  text-align: center;
+  background-position: center;
+  object-fit: cover;
+  padding-top: 40vh;
+  h1 {
+    text-align: center;
+    vertical-align: middle !important;
+    font-size: 60px;
+  }
+}
