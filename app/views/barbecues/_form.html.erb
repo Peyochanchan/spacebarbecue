@@ -1,1 +1,9 @@
-_form.html.erb
+<div class="d-block justify-content-center m-2 p-2">
+  <%= simple_form_for [ @barbecue ] do |f| %>
+    <%= f.input :title, label: "Title of your Product" %>
+  <%= f.input :description, label: "Description" %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :price, label: "Price in Euro" %>
+  <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

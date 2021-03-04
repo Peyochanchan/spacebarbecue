@@ -4,7 +4,7 @@
 class BarbecuesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
-    @barbecues = Barbecues.all
+    @barbecues = Barbecue.all
   end
 
   def show
@@ -16,9 +16,8 @@ class BarbecuesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
     @barbecue = Barbecue.new(barbecue_params)
-    if barbecue.save
+    if @barbecue.save
       redirect_to barbecue_path(@barbecue)
     else
       render "new"
