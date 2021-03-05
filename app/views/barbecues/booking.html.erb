@@ -1,1 +1,15 @@
-<h1>Les réservations à valider ou à venir</h1>
+<h1>Pour quand voulez-vous réserver ce Barbecue ?</h1>
+<div class="container d-flex">
+  <div class="card-body col-4 border border-light shadow bg-body rounded" style="width: 18rem;">
+    <p class="text-center">
+      <%= cl_image_tag("#{@barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
+    </p>
+    <h2 class="card-title"><%= @barbecue.title %></h2>
+    <p class="card-text"><%= @barbecue.description %></p>
+    <p class="card-text"><%= @barbecue.price %> € / day</p>
+  </div>
+  <div class="card-body col-4 offset-2 border border-light shadow bg-body rounded" style="width: 18rem;">
+    <h1>Owner:</h1>
+    <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+  </div>
+</div>

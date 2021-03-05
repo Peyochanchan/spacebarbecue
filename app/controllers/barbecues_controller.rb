@@ -35,8 +35,13 @@ class BarbecuesController < ApplicationController
   end
 
   def destroy
+    @barbecue = Barbecue.find(params[:id])
     @barbecue.destroy
     redirect_to root_path
+  end
+
+  def booking
+    @barbecue = Barbecue.find(params[:id])
   end
 
   private
