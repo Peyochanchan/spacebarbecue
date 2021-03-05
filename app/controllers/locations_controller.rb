@@ -3,18 +3,18 @@
 # :nodoc:
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
-    @user = User.find(params[:user_id])
+    @locations = Location.where(user: current_user)
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @location = Location.new(location_params)
-    @location.user = @user
+    @location = Location.new
+    @location.status = "pending"
+    @location.user_id = current_user.id
+    @location.barbecue_id = params[:barbecue][:id]
     if @location.save
       redirect_to locations_path
     else
-      render :new
+
     end
   end
 
@@ -25,6 +25,6 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:status)
+    params.require(:location).permit(:status, :user_id, :barbecue_id)
   end
 end

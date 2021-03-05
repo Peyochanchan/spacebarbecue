@@ -1,6 +1,8 @@
 class Location < ApplicationRecord
   belongs_to :user
   belongs_to :barbecue
-  validates :status, presence: true, inclusion: { in: %i[accepted declined canceled pending] }
+  validates :status, presence: true
   validates :user, uniqueness: { scope: :barbecue }
 end
+
+#  presence: true, inclusion: { in: %i[accepted declined canceled pending] }
