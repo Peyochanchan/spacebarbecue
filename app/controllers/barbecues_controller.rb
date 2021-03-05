@@ -2,8 +2,9 @@
 
 # :nodoc:
 class BarbecuesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   def index
-    @barbecues = Barbecues.all
+    @barbecues = Barbecue.all
   end
 
   def show
@@ -16,7 +17,8 @@ class BarbecuesController < ApplicationController
 
   def create
     @barbecue = Barbecue.new(barbecue_params)
-    if barbecue.save
+    @barbecue.user = current_user
+    if @barbecue.save
       redirect_to barbecue_path(@barbecue)
     else
       render "new"
@@ -40,6 +42,6 @@ class BarbecuesController < ApplicationController
   private
 
   def barbecue_params
-    params.require(:barbecue).permit(:title, :description, :price)
+    params.require(:barbecue).permit(:title, :description, :price, :photo)
   end
 end
