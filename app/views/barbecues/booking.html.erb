@@ -11,5 +11,6 @@
   <div class="card-body col-4 offset-2 border border-light shadow bg-body rounded" style="width: 18rem;">
     <h1>Owner:</h1>
     <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+    <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   </div>
 </div>
