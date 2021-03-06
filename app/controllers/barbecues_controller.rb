@@ -42,6 +42,9 @@ class BarbecuesController < ApplicationController
 
   def booking
     @barbecue = Barbecue.find(params[:id])
+    @start_time = params[:start_time]
+    @end_time = params[:end_time]
+    @location = Location.new
   end
 
   private
