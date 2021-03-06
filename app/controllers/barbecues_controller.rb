@@ -14,6 +14,10 @@ class BarbecuesController < ApplicationController
   end
 
   def show
+    @markers = {
+      lat: @barbecue.latitude,
+      long: @barbecue.longitude
+    }
   end
 
   def new
@@ -56,6 +60,6 @@ class BarbecuesController < ApplicationController
   end
 
   def barbecue_params
-    params.require(:barbecue).permit(:title, :description, :price, :photo)
+    params.require(:barbecue).permit(:title, :description, :address, :price, :photo)
   end
 end

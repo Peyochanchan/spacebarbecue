@@ -33,6 +33,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.16.0'
 gem "simple_calendar", "~> 2.4"
+gem 'mapbox-gl-rails'
+gem 'geocoder'
 # devise
 gem "devise"
 group :development, :test do
