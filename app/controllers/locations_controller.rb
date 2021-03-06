@@ -2,6 +2,10 @@
 
 # :nodoc:
 class LocationsController < ApplicationController
+  def new
+    @barbecue = Barbecue.find(params[:barbecue_id])
+  end
+
   def index
     @locations = Location.where(user: current_user)
   end
@@ -10,7 +14,8 @@ class LocationsController < ApplicationController
     @location = Location.new
     @location.status = "pending"
     @location.user_id = current_user.id
-    @location.barbecue_id = params[:barbecue][:id]
+    @barbecue = Barbecue.find(params[:barbecue_id])
+    @location.barbecue_id = @barbecue.id
     if @location.save
       redirect_to locations_path
     else
