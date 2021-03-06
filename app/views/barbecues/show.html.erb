@@ -1,6 +1,5 @@
 <div class="container d-flex justify-content-center">
-  <%= render 'map' %>
-  <div class="card-body col-8 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: -15px !important;">
+  <div class="card-body col-6 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: -15px !important;">
     <p class="text-center">
       <%= cl_image_tag("#{@barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
     </p>
@@ -11,11 +10,14 @@
       <a class="text-decoration-none text-wrap text-white">
       </a>
       <% if @barbecue.user == current_user %>
+      <div class="d-flex">
       <p class="text-decoration-none"><%= link_to 'Edit', edit_barbecue_path(@barbecue), id: "edit-link", class: "btn btn-info" %></p>
       <p class="text-decoration-none"><%= link_to 'Delete', barbecue_path(@barbecue), method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
+      </div>
       <% else %>
       <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-success" %></p>
       <% end %>
     </div>
   </div>
+  <%= render 'map' %>
 </div>
