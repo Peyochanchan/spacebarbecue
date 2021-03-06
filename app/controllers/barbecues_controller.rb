@@ -2,13 +2,18 @@
 
 # :nodoc:
 class BarbecuesController < ApplicationController
+  before_action :set_barbecue, only: [:show, :edit, :update, :destroy, :booking]
   skip_before_action :authenticate_user!, only: %i[index show]
+
   def index
-    @barbecues = Barbecue.all
+    if user_signed_in?
+      @barbecues = Barbecue.where.not(user: current_user)
+    else
+      @barbecues = Barbecue.all
+    end
   end
 
   def show
-    @barbecue = Barbecue.find(params[:id])
   end
 
   def new
@@ -26,7 +31,6 @@ class BarbecuesController < ApplicationController
   end
 
   def edit
-    @barbecue = Barbecue.find(params[:id])
   end
 
   def update
@@ -35,19 +39,21 @@ class BarbecuesController < ApplicationController
   end
 
   def destroy
-    @barbecue = Barbecue.find(params[:id])
     @barbecue.destroy
     redirect_to root_path
   end
 
   def booking
-    @barbecue = Barbecue.find(params[:id])
     @start_time = params[:start_time]
     @end_time = params[:end_time]
     @location = Location.new
   end
 
   private
+
+  def set_barbecue
+    @barbecue = Barbecue.find(params[:id])
+  end
 
   def barbecue_params
     params.require(:barbecue).permit(:title, :description, :price, :photo)
