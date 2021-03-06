@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="accueil d-flex align-items-center">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "Space_barbecue.jpeg" %>
+    <%= cl_image_tag("Space_barbecue_ltj71e") %>
     <% end %>
     <% if user_signed_in? %>
     <h2>Hello <%= current_user.first_name %></h2>
@@ -17,7 +17,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", barbecues_path, class: "nav-link" %>
+          <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "Messages", "#", class: "nav-link" %>
