@@ -30,7 +30,7 @@
     <div class="container col-6 d-block">
       <div class="card-body border border-light shadow bg-body rounded mb-2">
         <h1><u>Owner:</u></h1>
-        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= cl_image_tag @barbecue.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
       </div>
       <div class="card-body border border-light justify-content-center shadow bg-body rounded">
