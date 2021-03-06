@@ -26,6 +26,7 @@
 
           <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "See my space barbecue", barbecues_path, class: "dropdown-item" %>
             <%= link_to "Create a new space barbecue", new_barbecue_path, class: "dropdown-item" %>
             <%= link_to "See my reservations", locations_path, class: "dropdown-item" %>
 

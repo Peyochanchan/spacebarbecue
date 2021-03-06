@@ -1,10 +1,28 @@
-<div class="container">
-  <h2 class="text-center"> Louez votre espace de Barbecue en famille ou entre amis, entre particuliers ou professionnels</h1>
-</div>
-<div class="babouchka text-white">
-<div>
-  <h1>WELCOME TO</h1>
-  <h1>THE SPACE BARBECUE</h1>
-  <%= link_to ">>>> Enter <<<<", barbecues_path, class: "btn btn-primary" %>
+<div class="babouchka">
+  <div style="height:100%">
+    <div class="d-flex row justify-content-center">
+      <%= image_tag "logo.png" %>
+    </div>
+    <h1>THE SPACE BARBECUE</h1>
+    <h2 class="text-center"> Louez votre espace de Barbecue en famille ou entre amis,<br> entre particuliers ou professionnels</h2>
+    <a id="scroll_ancre" href="#ancre">▼</a>
+  </div>
+  <div class="row justify-content-center">
+    <p id="ancre" style="margin-top:50px";>Discover amazing barbecues !</p>
+  </div>
+
+  <div class="row justify-content-center">
+    <% @barbecues.each do |barbeuk| %>
+    <div class="card-body col-4 shadow p-3 m-2 bg-body rounded" style="width: 100%;">
+      <%= cl_image_tag barbeuk.photo.key, style: "width: 500px; height:250px; object-fit: cover;" %>
+      <h5 class="card-title" style="margin-top:15px"><%= barbeuk.title %></h5>
+      <p class="card-text"><%= barbeuk.description %></p>
+      <p class="card-text"><%= barbeuk.price %> € / day</p>
+      <div class="card-body col border border-light">
+        <a class="text-decoration-none text-wrap text-white">
+          <%= link_to 'Show', barbecue_path(barbeuk), class: "btn btn-warning btn-lg btn-block" %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>

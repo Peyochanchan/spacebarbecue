@@ -7,6 +7,10 @@
   <div class="row">
     <div class="col-12">
     <div class="card-body col-4 border border-light shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
+      <% if @locations == nil %>
+        <h1>Pas de location en cours</h1>
+
+      <% else %>
       <% @locations.each do |loc| %>
       <%= cl_image_tag("#{loc.barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
         <h1> <%= loc.barbecue.title %> </h1>
@@ -17,7 +21,7 @@
       <h1> <%= loc.barbecue.user.first_name %></h1>
       <h1> <%= loc.barbecue.user.last_name %></h1>
       <% end %>
-
+      <% end %>
     </div>
   </div>
 </div>
