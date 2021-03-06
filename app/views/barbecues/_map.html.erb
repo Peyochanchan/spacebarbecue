@@ -1,0 +1,21 @@
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<script>
+  const map_data = document.getElementById('map');
+  const markers = JSON.parse(map_data.dataset.markers)
+
+  mapboxgl.accessToken = map_data.dataset.mapboxApiKey;
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+  style: 'mapbox://styles/mapbox/streets-v11', // style URL
+  center: [markers.long, markers.lat], // starting position [lng, lat]
+  zoom: 12 // starting zoom
+  });
+
+  const marker = new mapboxgl.Marker()
+  .setLngLat([markers.long, markers.lat])
+  .addTo(map);
+</script>

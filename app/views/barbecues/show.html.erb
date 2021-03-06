@@ -1,5 +1,6 @@
 <div class="container d-flex justify-content-center">
-  <div class="card-body col-8 border border-light shadow bg-body rounded" style="width: 18rem;">
+  <%= render 'map' %>
+  <div class="card-body col-8 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: -15px !important;">
     <p class="text-center">
       <%= cl_image_tag("#{@barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
     </p>
