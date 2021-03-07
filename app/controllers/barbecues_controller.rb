@@ -53,6 +53,12 @@ class BarbecuesController < ApplicationController
     @location = Location.new
   end
 
+  def search
+    @barbecues = Barbecue.where("title LIKE '%#{params[:search]}%' OR address LIKE '%#{params[:search]}%'")
+    @total = Barbecue.count
+    @request = params[:search]
+  end
+
   private
 
   def set_barbecue
