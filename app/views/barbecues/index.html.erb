@@ -1,22 +1,18 @@
 <div class="container">
-
   <div class="d-flex row justify-content-center">
     <%= cl_image_tag("Space_barbecue_ltj71e") %>
   </div>
-</div>
-<div class="row justify-content-center">
-  <% @barbecues.each do |barbeuk| %>
-      <div class="card-body col-4 border border-light shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
-
-        <%= cl_image_tag barbeuk.photo.key, style: "width: 100%; object-fit: cover;" %>
-
-        <h5 class="card-title"><%= barbeuk.title %></h5>
-        <p class="card-text"><%= barbeuk.description %></p>
-        <p class="card-text"><%= barbeuk.price %> € / day</p>
-        <div class="card-body col border border-light">
-          <a class="text-decoration-none text-wrap text-white">
-            <%= link_to 'Show', barbecue_path(barbeuk), class: "btn btn-primary" %>
-        </div>
+  <div class="row justify-content-center">
+    <% @barbecues.each do |barbeuk| %>
+    <div class="card-body col-4 border border-light shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
+      <%= cl_image_tag barbeuk.photo.key, style: "width: 100%; object-fit: cover;" %>
+      <h5 class="card-title"><%= barbeuk.title %></h5>
+      <p class="card-text"><%= barbeuk.description %></p>
+      <p class="card-text"><%= barbeuk.price %> € / day</p>
+      <div class="card-body col border border-light">
+        <%= link_to 'Show', barbecue_path(barbeuk), class: "btn btn-primary" %>
       </div>
-  <% end %>
+    </div>
+    <% end %>
+  </div>
 </div>
