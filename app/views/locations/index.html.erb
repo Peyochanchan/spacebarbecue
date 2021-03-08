@@ -1,28 +1,37 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <H1>My Bookings</H1>
+      <H1>Mes réservations</H1>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-    <div class="card-body col-4 border border-light shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
       <% if @locations == nil %>
-        <h1>Pas de location en cours</h1>
-
+        <p>Vous n'avez pas encore effectué de réservations...Ne tardez plus !</p>
       <% else %>
-      <% @locations.each do |loc| %>
-      <%= cl_image_tag("#{loc.barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
-        <h1> <%= loc.barbecue.title %> </h1>
-        <h1> <%= loc.barbecue.description %> </h1>
-      <h2> Status </h2>
-      <h1> <%= loc.status %></h1>
-      <h2> Owner </h2>
-      <h1> <%= loc.barbecue.user.first_name %></h1>
-      <h1> <%= loc.barbecue.user.last_name %></h1>
-      <% end %>
+        <p>Vous avez fait le bon choix ! ;)</p>
+        <% @locations.each do |loc| %>
+        <div class="card-my-reservations">
+          <div class="card-my-reservations-img">
+            <div class="img-card">
+              <%= cl_image_tag("#{loc.barbecue.photo.key}") %>
+            </div>
+          </div>
+          <div class="first_line">
+          <div class="card-my-reservations-txt">
+            <h2><%= loc.barbecue.title %> </h2>
+            <p><%= loc.barbecue.description %></p>
+          </div>
+          <div class="card-my-reservations-status">
+            <p><span style="font-weight:bold";>Status :</span> <%= loc.status %></p>
+          </div>
+          </div>
+          <div class="card-my-reservations-owner">
+            <p><span style="font-weight:bold";>Owner : </span> <%= loc.barbecue.user.first_name %> <%= loc.barbecue.user.last_name %></p>
+          </div>
+        </div>
+          <% end %>
       <% end %>
     </div>
   </div>
-</div>
 </div>
