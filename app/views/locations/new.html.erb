@@ -9,40 +9,26 @@
     <h2 class="card-title"><%= @barbecue.title %></h2>
     <p class="card-text"><%= @barbecue.description %></p>
     <p class="card-text"><%= @barbecue.price %> € / day</p>
-    <div class="card bg-light m-2 p-2">
-      <div class="flat-card">
-        <div class="input-group input-group-md p-1">
-          <span class="input-group-text" id="inputGroup-sizing-md">From</span>
-          <input type="text" class="form-control" name="start_time" placeholder="MM/DD/YYYY">
-        </div>
-        <div class="input-group input-group-md p-1">
-          <span class="input-group-text" id="inputGroup-sizing-md">To</span>
-          <input type="text" class="form-control" name="end_time" placeholder="MM/DD/YYYY">
-        </div>
-        <div class="d-flex justify-content-center">
-          <button id="sweet-alert" type="button" class="btn btn-success">Book Now !</button>
-          <%= link_to "Johnny", barbecue_locations_path(@barbecue), method: :post, id: "delete"%>
-        </div>
-      </div>
-    </div>
+    <%= form_tag(barbecue_locations_path(@barbecue), method: :post) do %>
+    <input name="start_time" type="date" placeholder="start date" id="flatpickr">
+    <input name="end_time" type="date" placeholder="end date" id="flatpickr-2">
+    <input type="submit" class="timer input-group-text btn-primary" value="Book">
+    <% end %>
   </div>
-  <div class="container col-6 d-block">
-    <div class="card-body border border-light shadow bg-body rounded mb-2">
-      <% if current_user.photo.attached? == false %>
-      <h1><u>Owner:</u></h1>
-      <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
-      <% else %>
-      <h1><u>Owner:</u></h1>
-      <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
-      <div class="img">
-        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      </div>
-      <% end %>
+</div>
+</div>
+<div class="container col-6 d-block">
+<div class="card-body border border-light shadow bg-body rounded mb-2">
+  <% if @barbecue.user.photo.attached? == false %>
+  <h1><u>Owner:</u></h1>
+  <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+  <% else %>
+  <h1><u>Owner:</u></h1>
+  <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+  <div class="img">
+    <%= cl_image_tag @barbecue.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   </div>
-    <div class="card-body border border-light shadow bg-body rounded mb-2" style="width: 100%">
-        <%= month_calendar do |date| %>
-        <%= date.day %>
-        <% end %>
-      </div>
-    </div>
+  <% end %>
+</div>
+</div>
 </div>

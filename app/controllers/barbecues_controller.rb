@@ -54,7 +54,8 @@ class BarbecuesController < ApplicationController
   end
 
   def search
-    @barbecues = Barbecue.where("title LIKE '%#{params[:search]}%' OR address LIKE '%#{params[:search]}%'")
+    sql_query = "title ILIKE :query OR address LIKE :query"
+    @barbecues = Barbecue.where(sql_query, query: "%#{params[:search]}%")
     @total = Barbecue.count
     @request = params[:search]
     @markers = @barbecues.geocoded.map do |barbecue|
