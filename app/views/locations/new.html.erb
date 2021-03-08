@@ -20,8 +20,7 @@
           <input type="text" class="form-control" name="end_time" placeholder="MM/DD/YYYY">
         </div>
         <div class="d-flex justify-content-center">
-          <button id="sweet-alert" type="button" class="btn btn-success">Book Now !</button>
-          <%= link_to "Johnny", barbecue_locations_path(@barbecue), method: :post, id: "delete"%>
+          <button id="sweet-alert" type="button" class="btn btn-success"><%= link_to "Book now!", barbecue_locations_path(@barbecue), method: :post, id: "delete"%></button>
         </div>
       </div>
     </div>
@@ -35,7 +34,7 @@
       <h1><u>Owner:</u></h1>
       <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
       <div class="img">
-        <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <%= cl_image_tag @barbecue.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       </div>
       <% end %>
   </div>
