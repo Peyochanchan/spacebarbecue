@@ -6,11 +6,7 @@ class BarbecuesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if user_signed_in?
-      @barbecues = Barbecue.where.not(user: current_user)
-    else
-      @barbecues = Barbecue.all
-    end
+    @barbecues = Barbecue.where(user: current_user)
   end
 
   def show
