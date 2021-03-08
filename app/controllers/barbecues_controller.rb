@@ -2,7 +2,7 @@
 
 # :nodoc:
 class BarbecuesController < ApplicationController
-  before_action :set_barbecue, only: [:show, :edit, :update, :destroy, :booking]
+  before_action :set_barbecue, only: %i[show edit update destroy booking]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
@@ -15,8 +15,8 @@ class BarbecuesController < ApplicationController
 
   def show
     @markers = {
-      lat: @barbecue.latitude,
-      long: @barbecue.longitude
+      lng: @barbecue.longitude,
+      lat: @barbecue.latitude
     }
   end
 
@@ -57,6 +57,12 @@ class BarbecuesController < ApplicationController
     @barbecues = Barbecue.where("title LIKE '%#{params[:search]}%' OR address LIKE '%#{params[:search]}%'")
     @total = Barbecue.count
     @request = params[:search]
+    @markers = @barbecues.geocoded.map do |barbecue|
+      {
+        lat: barbecue.latitude,
+        lng: barbecue.longitude
+      }
+    end
   end
 
   private
