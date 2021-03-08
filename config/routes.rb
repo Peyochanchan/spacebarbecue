@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %i[new create]
-  resources :locations, only: %i[index update]
+  resources :locations, only: %i[index update destroy]
   # get 'users/:id/booking/', to: 'barbecues#booking', as: :booking
 end

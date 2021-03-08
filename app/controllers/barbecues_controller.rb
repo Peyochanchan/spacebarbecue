@@ -6,11 +6,7 @@ class BarbecuesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    if user_signed_in?
-      @barbecues = Barbecue.where.not(user: current_user)
-    else
-      @barbecues = Barbecue.all
-    end
+    @barbecues = Barbecue.where(user: current_user)
   end
 
   def show
@@ -54,7 +50,8 @@ class BarbecuesController < ApplicationController
   end
 
   def search
-    @barbecues = Barbecue.where("title LIKE '%#{params[:search]}%' OR address LIKE '%#{params[:search]}%'")
+    sql_query = "title ILIKE :query OR address LIKE :query"
+    @barbecues = Barbecue.where(sql_query, query: "%#{params[:search]}%")
     @total = Barbecue.count
     @request = params[:search]
     @markers = @barbecues.geocoded.map do |barbecue|
