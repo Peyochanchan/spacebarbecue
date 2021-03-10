@@ -47,6 +47,20 @@ document.addEventListener("turbolinks:load", function() {
       link.click();
     }
   });
+    initSweetalert('#sweet-alert-book', {
+    title: "Your order is Complete",
+    text: "Waiting for the Owner to confirm",
+    buttons: {
+      cancel: true,
+      confirm: "OK",
+    },
+    icon: "success"
+    }, (value) => {
+    if (value) {
+      const link = document.querySelector('#book');
+      link.click();
+    }
+  });
   initMapbox();
   flatpickr();
   // Call your functions here, e.g:

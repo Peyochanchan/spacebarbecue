@@ -7,8 +7,10 @@
   </div>
 
   <div class="row">
+  <div class="row">
     <div class="col-12">
       <% if @locations == nil %>
+
       <p>Vous n’avez pas encore effectué de réservations...Ne tardez plus !</p>
       <% else %>
       <p>Vous avez fait le bon choix ! ;)</p>
@@ -38,7 +40,6 @@
             <%= link_to "", location_path(loc), method: :delete, id: "delete", class: "hidden" %>
           </div>
         </div>
-
       </div>
     <% end %>
     <% end %>
