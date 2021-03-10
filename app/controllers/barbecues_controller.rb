@@ -3,7 +3,7 @@
 # :nodoc:
 class BarbecuesController < ApplicationController
   before_action :set_barbecue, only: %i[show edit update destroy booking]
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: :show
 
   def index
     @barbecues = Barbecue.where(user: current_user)
@@ -39,8 +39,8 @@ class BarbecuesController < ApplicationController
   end
 
   def destroy
-    @barbecue.destroy
-    redirect_to root_path
+      @barbecue.destroy
+      redirect_to root_path
   end
 
   def booking
@@ -50,7 +50,7 @@ class BarbecuesController < ApplicationController
   end
 
   def search
-    sql_query = "title ILIKE :query OR address LIKE :query"
+    sql_query = "title ILIKE :query OR address ILIKE :query"
     @barbecues = Barbecue.where(sql_query, query: "%#{params[:search]}%")
     @total = Barbecue.count
     @request = params[:search]

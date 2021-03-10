@@ -1,46 +1,47 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <H1>Mes réservations</H1>
     </div>
   </div>
   <div class="row">
+  <div class="row">
     <div class="col-12">
       <% if @locations == nil %>
-        <p>Vous n'avez pas encore effectué de réservations...Ne tardez plus !</p>
+      <p>Vous n'avez pas encore effectué de réservations...Ne tardez plus !</p>
       <% else %>
-        <p>Vous avez fait le bon choix ! ;)</p>
-        <% @locations.each do |loc| %>
-        <div class="card-my-reservations">
+      <p>Vous avez fait le bon choix ! ;)</p>
+      <% @locations.each do |loc| %>
+      <div class="card-my-reservations">
+        <div>
           <div class="card-my-reservations-img">
-            <div class="img-card">
-              <%= cl_image_tag("#{loc.barbecue.photo.key}") %>
+            <%= cl_image_tag("#{loc.barbecue.photo.key}", style: "height: 100%; width: 100%; object-fit: cover") %>
+          </div>
+        </div>
+        <div>
+          <div class="first_line">
+            <div class="card-my-reservations-txt">
+              <h2><%= loc.barbecue.title %> </h2>
+              <p><%= loc.barbecue.description %></p>
+              <p> FROM <strong><u> <%= loc.start_time %></u></strong> TO <strong><u> <%= loc.end_time %> </u></strong> </p>
             </div>
           </div>
-          <div class="first_line">
-          <div class="card-my-reservations-txt">
-            <h2><%= loc.barbecue.title %> </h2>
-            <p><%= loc.barbecue.description %></p>
-            <p> FROM </p>
-            <h1> <strong><u> <%= loc.start_time %></u></strong> </h1>
-            <p> TO </p>
-            <h1> <strong><u> <%= loc.end_time %> </u></strong> </h1>
-          </div>
+        </div>
+        <div>
           <div class="card-my-reservations-status">
-            <p><span style="font-weight:bold";>Status :</span> <%= loc.status %></p>
-          </div>
+            <p><span style="font-weight:bold">Status :</span> <%= loc.status %></p>
           </div>
           <div class="card-my-reservations-owner">
-            <p><span style="font-weight:bold";>Owner : </span> <%= loc.barbecue.user.first_name %> <%= loc.barbecue.user.last_name %></p>
+            <p><span style="font-weight:bold">Owner : </span> <%= loc.barbecue.user.first_name %> <%= loc.barbecue.user.last_name %></p>
           </div>
           <div id="sweet-alert">
             <button id="sweet-alert" class="btn btn-info">Delete</button>
             <%= link_to "", location_path(loc), method: :delete, id: "delete", class: "hidden" %>
           </div>
         </div>
-          <% end %>
-      <% end %>
+      </div>
     </div>
+    <% end %>
+    <% end %>
   </div>
 </div>

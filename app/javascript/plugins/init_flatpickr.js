@@ -8,8 +8,7 @@ flatpickr("#flatpickr", {
 
 flatpickr("#flatpickr-2", {
   altFormat: "j F Y",
-  dateFormat: "d-m-Y",
-  minDate: "today"
+  dateFormat: "d-m-Y"
   });
 
 export { flatpickr };

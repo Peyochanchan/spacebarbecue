@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-  <div class="card-body col-6 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: -15px !important;">
+  <div class="card-body col-6 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: 5px !important;">
     <p class="text-center">
       <%= cl_image_tag("#{@barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
     </p>
@@ -9,10 +9,13 @@
     <div class="card-body col border border-light">
       <a class="text-decoration-none text-wrap text-white"></a>
       <% if @barbecue.user == current_user %>
-        <p class="text-decoration-none"><%= link_to 'Edit', edit_barbecue_path(@barbecue), id: "edit-link", class: "btn btn-info" %></p>
-        <p class="text-decoration-none"><%= link_to 'Delete', barbecue_path(@barbecue), method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
+      <p class="text-decoration-none"><%= link_to 'Edit', edit_barbecue_path(@barbecue), id: "edit-link", class: "btn btn-info" %></p>
+      <% if @barbecue.locations.empty? %>
+      <p class="text-decoration-none"><%= link_to 'Delete', barbecue_path(@barbecue), method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
+      <% end %>
       <% else %>
-        <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-success" %></p>
+      <p>There is still a reservation pending. You need to cancel it if you want to delete it</p>
+      <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-success" %></p>
       <% end %>
     </div>
   </div>
