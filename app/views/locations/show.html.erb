@@ -1,0 +1,18 @@
+<div class="row bg-info">
+  <div class="col-12">
+    <div class="bg-info">
+      <h2>Your pending Requests </h2>
+      <% if @barbecue.locations.where(status: "pending").any? %>
+      <div>
+        <%= cl_image_tag @barbecue.photo.key, style: "width: 200px; object-fit: cover;" %>
+        <%= @location.user.first_name %> <%= @location.user.last_name %>
+        <h6> FROM <%= @location.start_time %> TO <% @location.end_time %> </h6>
+        <%= form_tag(location_path(@location), method: :patch, class: "inline-flex justify-content-center") do %>
+              <input type="submit" class="input-group-text btn-primary" name="accepted" value="ACCEPT">
+              <input type="submit" class="input-group-text btn-primary" name="declined" value="DECLINE">
+              <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
