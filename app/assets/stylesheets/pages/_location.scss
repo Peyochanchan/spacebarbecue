@@ -7,7 +7,7 @@
     box-shadow: 3px 3px 5px 2px rgba(220, 220, 220, .6);
 }
 
-.card-my-reservations-img {
+.bloc-image {
     float:left;
     margin-left: auto;
     margin-right: auto;
@@ -18,45 +18,60 @@
     color:black;
 }
 
-.first_line {
-    width:70%;
+.img-card{
+    height: 216px;
+    width: 100%;
+    object-fit: cover;
+}
 
-.card-my-reservations-txt {
+.card-left {
     float:left;
     margin-left: auto;
     margin-right: auto;
     padding-left:30px;
     padding-top:15px;
     width:50%;
-        height:216px;
+    height:100%;
     text-align: left;
     vertical-align: top !important;
     color:black;
-    border: black 10px;
-    background-color: $info;
-    padding: 15px;
+}
+
+.card-my-reservations-owner {
+    height:100%;
+    float:left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:27px;
+    text-align: left;
+    vertical-align:bottom;
+}
+
+.card-right {
+    float:right;
+    width:20%;
+    height:216px;
+    text-align: right;
+    color:black;
 }
 
 .card-my-reservations-status {
     float:right;
-    width:20%;
+    width:100%;
     text-align: right;
     vertical-align: top;
-        height:216px;
-    font-size: 20px;
-    color:green;
-    border: black 10px !important;
-}
-}
-.card-my-reservations-owner {
-    float:right;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left:30px;
+    padding-left:72px;
     padding-top:15px;
-        height:216px;
-    width:50%;
+    height:50%;
+}
+
+
+.button {
+    float:right;
+    width:100%;
     text-align: right;
-    vertical-align: bottom !important;
-    border: black 10px;
+    vertical-align: bottom;
+    padding-right:20px;
+    padding-top:50px;
+    height:50%;
 }
