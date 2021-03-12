@@ -1,18 +1,41 @@
-<div class="row bg-info">
+<div class="row">
   <div class="col-12">
-    <div class="bg-info">
-      <h2>Your pending Requests </h2>
-      <% if @barbecue.locations.where(status: "pending").any? %>
-      <div>
-        <%= cl_image_tag @barbecue.photo.key, style: "width: 200px; object-fit: cover;" %>
-        <%= @location.user.first_name %> <%= @location.user.last_name %>
-        <h6> FROM <%= @location.start_time %> TO <% @location.end_time %> </h6>
-<%= form_tag(location_path(id: @location, barbecue_id: @barbecue.id), method: :patch, class: "flex-center justify-content-center") do %>
-        <input type="submit" class="input-group-text btn-primary" name= "status" value="accepted">
-        <input type="submit" class="input-group-text btn-primary" name= "status" value="declined">
-        <input type="submit" class="input-group-text btn-primary" name= "status" value="canceled">
-              <% end %>
-        <% end %>
+    <% if @barbecue.locations.where(status: "pending").any? %>
+    <h2><u>Your pending Requests</u></h2>
+    <div class="card-my-reservations">
+      <div class="bloc-image">
+        <%= cl_image_tag "#{@location.barbecue.photo.key}", class: "img-card" %>
+      </div>
+      <div class="card-left">
+        <h5> <%= @location.user.first_name %> <%= @location.user.last_name %> wants to rent your Barbecue</h5>
+        <h6> FROM <%= @location.start_time %> TO <%= @location.end_time %> </h6>
+        </div>
+        <div class="card-right">
+          <div class="card-my-reservations-status">
+            <p><strong><u>Status:</u></strong> <%= @location.status.upcase %></p>
+            <div class="flex-wrap">
+              <%= form_tag(location_path(id: @location, barbecue_id: @barbecue.id), method: :patch, class: "flex-center justify-content-center") do %>
+              <input type="submit" class="input-group-text btn-primary" name= "status" value="accepted">
+              <input type="submit" class="input-group-text btn-primary" name= "status" value="declined">
+              <input type="submit" class="input-group-text btn-primary" name= "status" value="canceled">
+            </div>
+          </div>
+          <% end %>
+          <% else %>
+          <div>
+          <% @location.where(status: "accepted").any? %>
+            <h2>Reservations confirmed</h2>
+            <%= cl_image_tag @barbecue.photo.key, style: "width: 200px; object-fit: cover;" %>
+            <%= @location.user.first_name %> <%= @location.user.last_name %>
+            <%= @location.user.email %>
+            <%= cl_image_tag @location.user.photo.key, style: "width: 200px; object-fit: cover;" %>
+            <h6> FROM <%= @location.start_time %> TO <%= @location.end_time %> </h6>
+            <%= form_tag(location_path(id: @location, barbecue_id: @barbecue.id), method: :patch, class: "flex-center justify-content-center") do %>
+            <input type="submit" class="input-group-text btn-primary" name= "status" value="canceled">
+            <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
