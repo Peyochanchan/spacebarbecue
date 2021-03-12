@@ -2,7 +2,7 @@
 
 # :nodoc:
 class LocationsController < ApplicationController
-  before_action :set_params, only: %i[update destroy]
+  before_action :set_params, only: %i[show update destroy]
 
   def index
     @locations = Location.where(user: current_user)
@@ -10,7 +10,6 @@ class LocationsController < ApplicationController
 
   def show
     @barbecue = Barbecue.find(params[:barbecue_id])
-    @location = Location.find(params[:id])
   end
 
   def new
@@ -29,19 +28,20 @@ class LocationsController < ApplicationController
     if @location.save
       redirect_to locations_path
     else
+      redirect_to root_path
     end
   end
 
   def update
-    # if params[:accept] == "ACCEPT"
-    #   @location.status = "accepted"
-    # else
-    #   params[:decline] == "DECLINE"
-    #   @location.status = "declined"
-    #   redirect_to location_path(@location), method: :delete, notice: { alert: "Are You Sure" }
-      @location.update(location_params)
-        redirect_to locations_path
+    case params[:status]
+    when "accepted"
+      @location.update_attribute(:status, "accepted")
+    when "declined"
+      @location.update_attribute(:status, "declined")
+    when "canceled"
+      @location.update_attribute(:status, "canceled")
     end
+    redirect_to barbecues_path
   end
 
   def destroy
@@ -57,5 +57,8 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location).permit(:status, :user_id, :barbecue_id, :start_time, :end_time)
+  end
+end
+status, :user_id, :barbecue_id, :start_time, :end_time)
   end
 end

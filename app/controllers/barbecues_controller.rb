@@ -39,8 +39,8 @@ class BarbecuesController < ApplicationController
   end
 
   def destroy
-      @barbecue.destroy
-      redirect_to root_path
+    @barbecue.destroy
+    redirect_to root_path
   end
 
   def booking
