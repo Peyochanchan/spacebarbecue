@@ -59,6 +59,3 @@ class LocationsController < ApplicationController
     params.require(:location).permit(:status, :user_id, :barbecue_id, :start_time, :end_time)
   end
 end
-status, :user_id, :barbecue_id, :start_time, :end_time)
-  end
-end

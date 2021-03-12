@@ -7,19 +7,16 @@
   </div>
 
   <div class="row">
+        <p>Vous n’avez pas encore effectué de réservations...Ne tardez plus !</p>
   <div class="row">
+      <% if @locations.any? %>
     <div class="col-12">
-      <% if @locations == nil %>
-
-      <p>Vous n’avez pas encore effectué de réservations...Ne tardez plus !</p>
-      <% else %>
       <p>Vous avez fait le bon choix ! ;)</p>
       <% @locations.each do |loc| %>
+      <div class="card-my-reservations">
 
-      <div class="card-my-reservations"> 
-        
         <div class="bloc-image">
-          <%= cl_image_tag("{loc.barbecue.photo.key}", class: "img-card") %>
+          <%= cl_image_tag "#{loc.barbecue.photo.key}", class: "img-card" %>
         </div>
 
         <div class="card-left">
@@ -28,7 +25,7 @@
             <p> Réservé du <strong><u> <%= loc.start_time %></u></strong> au <strong><u> <%= loc.end_time %> </u></strong> </p>
           <div class="card-my-reservations-owner">
             <p><span style="font-weight:bold">Owner : </span> <%= loc.barbecue.user.first_name %> <%= loc.barbecue.user.last_name %></p>
-          </div>        
+          </div>
         </div>
 
         <div class="card-right">
