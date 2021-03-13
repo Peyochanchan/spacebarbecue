@@ -28,6 +28,10 @@
     <h5 class="card-title" style="margin-top:15px"><%= barbeuk.title %></h5>
     <p class="card-text"><%= barbeuk.description %></p>
     <p class="card-text"><%= barbeuk.price %> € / day</p>
+    <p><span style="font-weight:bold">Owner : </span> <%= barbeuk.user.first_name %> <%= barbeuk.user.last_name %></p>
+    <p class="card-text"><%= barbeuk.address %></p>
+
+    <p></p>
   </div>
   <div class="card-body col border border-light">
     <%= link_to 'Show', barbecue_path(barbeuk), class: "text-decoration-none text-wrap text-white btn btn-warning btn-lg btn-block" %>
