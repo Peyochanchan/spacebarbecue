@@ -29,7 +29,7 @@
             <%= @location.user.first_name %> <%= @location.user.last_name %>
             <%= @location.user.email %>
             <%= cl_image_tag @location.user.photo.key, style: "width: 200px; object-fit: cover;" %>
-            <h6> FROM <%= @location.start_time %> TO <%= @location.end_time %> </h6>
+            <h6> FROM <strong><%= @location.start_time %></strong> TO <strong><%= @location.end_time %></strong> </h6>
             <%= form_tag(location_path(id: @location, barbecue_id: @barbecue.id), method: :patch, class: "flex-center justify-content-center") do %>
             <input type="submit" class="input-group-text btn-primary" name= "status" value="canceled">
             <% end %>

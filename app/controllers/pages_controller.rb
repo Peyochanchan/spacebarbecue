@@ -6,5 +6,13 @@ class PagesController < ApplicationController
     else
       @barbecues = Barbecue.all
     end
+    # the `geocoded` scope filters only flats with coordinates (latitude & longitude)
+    @markers = @barbecues.geocoded.map do |barbecue|
+      {
+        lat: barbecue.latitude,
+        lng: barbecue.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { barbecue: barbecue })
+      }
+    end
   end
 end
