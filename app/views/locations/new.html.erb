@@ -1,7 +1,7 @@
 <h1>Pour quand voulez-vous réserver ce Barbecue ?</h1>
 <br>
 <br>
-<div class="container d-flex">
+<div class="container d-flex justify-content-center">
   <div class="card-body col-6 border border-light shadow bg-body rounded" style="width: 18rem;">
     <p class="text-center">
       <%= cl_image_tag("#{@barbecue.photo.key}", style: "width: 100%; object-fit: cover;") %>
@@ -13,22 +13,22 @@
       <%= form_tag(barbecue_locations_path(id: @location.id, barbecue_id: @barbecue.id), method: :post, class: "inline-flex justify-content-center") do %>
       <input name="start_time" type="date" placeholder="start date" id="flatpickr" class="col-4">
       <input name="end_time" type="date" placeholder="end date" id="flatpickr-2" class="col-4">
-        <input type="submit" class="input-group-text btn-primary" value="BooK">
+      <input type="submit" class="input-group-text btn-primary" value="BooK">
       <% end %>
     </div>
+<div class="card-body border border-light shadow bg-body rounded my-2">
+  <% if @barbecue.user.photo.attached? == false %>
+  <h1><u>Owner:</u></h1>
+  <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+  <% else %>
+  <div class="row justify-content-between">
+  <h1><u>Owner:</u></h1>
+  <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
+  <div class="img">
+    <%= cl_image_tag @barbecue.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
   </div>
-</div>
-<div class="container col-6 d-block">
-  <div class="card-body border border-light shadow bg-body rounded mb-2">
-    <% if @barbecue.user.photo.attached? == false %>
-    <h1><u>Owner:</u></h1>
-    <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
-    <% else %>
-    <h1><u>Owner:</u></h1>
-    <h1> <%= "#{@barbecue.user.first_name} #{@barbecue.user.last_name}"%> </h1>
-    <div class="img">
-      <%= cl_image_tag @barbecue.user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    </div>
-    <% end %>
   </div>
+  <% end %>
 </div>
+</div>
+  </div>

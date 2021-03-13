@@ -5,41 +5,42 @@
       <H1>Mes réservations</H1>
     </div>
   </div>
-
   <div class="row">
-        <p>Vous n’avez pas encore effectué de réservations...Ne tardez plus !</p>
-  <div class="row">
-      <% if @locations.any? %>
+    <% if @locations.any? %>
     <div class="col-12">
-      <p>Vous avez fait le bon choix ! ;)</p>
-      <% @locations.each do |loc| %>
-      <div class="card-my-reservations">
-
+<!--       <p>Vous avez fait le bon choix ! ;)</p>
+ -->      <% @locations.each do |loc| %>
+      <div class="card-my-reservations border border-info">
         <div class="bloc-image">
           <%= cl_image_tag "#{loc.barbecue.photo.key}", class: "img-card" %>
         </div>
-
         <div class="card-left">
           <h2><%= loc.barbecue.title %> </h2>
-            <p><%= loc.barbecue.description %></p>
-            <p> Réservé du <strong><u> <%= loc.start_time %></u></strong> au <strong><u> <%= loc.end_time %> </u></strong> </p>
+          <p><%= loc.barbecue.description %></p>
+          <p> Réservé du <strong><u> <%= loc.start_time %></u></strong> au <strong><u> <%= loc.end_time %> </u></strong> </p>
           <div class="card-my-reservations-owner">
             <p><span style="font-weight:bold">Owner : </span> <%= loc.barbecue.user.first_name %> <%= loc.barbecue.user.last_name %></p>
+            <% if loc.status == "accepted" %>
+            <%= loc.barbecue.user.email %>
+            <% end %>
           </div>
         </div>
-
-        <div class="card-right">
+        <div class="card-right justify-content-center">
           <div class="card-my-reservations-status">
             <p><span style="font-weight:bold">Status :</span> <%= loc.status %></p>
           </div>
           <div class="button">
-            <button id="sweet-alert" class="btn btn-info">Delete</button>
+            <button id="sweet-alert" class="btn btn-info">Cancel</button>
             <%= link_to "", location_path(loc), method: :delete, id: "delete", class: "hidden" %>
           </div>
         </div>
       </div>
-    <% end %>
-    <% end %>
+      <% end %>
+      <% else %>
+      <div class="row">
+        <p>Vous n’avez pas encore effectué de réservations...Ne tardez plus !</p>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
