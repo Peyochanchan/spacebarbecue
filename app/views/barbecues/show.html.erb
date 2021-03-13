@@ -14,8 +14,8 @@
       <p class="text-decoration-none"><%= link_to 'Delete', barbecue_path(@barbecue), method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
       <% end %>
       <% else %>
-      <p>There is still a reservation pending. You need to cancel it if you want to delete it</p>
-      <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-success" %></p>
+<!--       <p>There is still a reservation pending. You need to cancel it if you want to delete it</p>
+ -->      <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-warning" %></p>
       <% end %>
     </div>
   </div>
