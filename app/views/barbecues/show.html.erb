@@ -6,16 +6,18 @@
     <h2 class="card-title"><%= @barbecue.title %></h2>
     <p class="card-text"><%= @barbecue.description %></p>
     <p class="card-text"><%= @barbecue.price %> € / day</p>
+    <p><span style="font-weight:bold">Owner : </span> <%= @barbecue.user.first_name %> <%= @barbecue.user.last_name %></p>
+    <p class="card-text"><%= @barbecue.address %></p>
     <div class="card-body col border border-light">
       <a class="text-decoration-none text-wrap text-white"></a>
       <% if @barbecue.user == current_user %>
       <p class="text-decoration-none"><%= link_to 'Edit', edit_barbecue_path(@barbecue), id: "edit-link", class: "btn btn-info" %></p>
       <% if @barbecue.locations.empty? %>
+      <p>There is still a reservation pending. You need to cancel it if you want to delete it</p>
       <p class="text-decoration-none"><%= link_to 'Delete', barbecue_path(@barbecue), method: :delete, id: "delete-link", class: "btn btn-danger" %></p>
       <% end %>
       <% else %>
-<!--       <p>There is still a reservation pending. You need to cancel it if you want to delete it</p>
- -->      <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-warning" %></p>
+      <p class="text-decoration-none"><%= link_to 'Book', new_barbecue_location_path(@barbecue), id: "book-link", class: "btn btn-success" %></p>
       <% end %>
     </div>
   </div>
