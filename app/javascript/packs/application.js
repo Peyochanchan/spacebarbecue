@@ -31,7 +31,8 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-
+// document.addEventListener("load", function() {
+// });
 document.addEventListener("turbolinks:load", function() {
   initSweetalert('#sweet-alert', {
     title: "Delete this Booking ???",

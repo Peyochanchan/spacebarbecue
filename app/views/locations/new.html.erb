@@ -11,8 +11,8 @@
     <p class="card-text"><%= @barbecue.price %> € / day</p>
     <div id="d-block sweet-alert-book">
       <%= form_tag(barbecue_locations_path(id: @location.id, barbecue_id: @barbecue.id), method: :post, class: "inline-flex justify-content-center") do %>
-      <input name="start_time" type="date" placeholder="start date" id="flatpickr" class="col-4">
-      <input name="end_time" type="date" placeholder="end date" id="flatpickr-2" class="col-4">
+      <input name="start_time" placeholder="start date" id="flatpickr" class="col-4">
+      <input name="end_time" placeholder="end date" id="flatpickr-2" class="col-4">
       <input type="submit" class="input-group-text btn-primary" value="BooK">
       <% end %>
     </div>
