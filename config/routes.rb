@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: %i[new create]
-  resources :locations, only: %i[show index update destroy]
+
+  resources :locations, only: %i[show index update destroy] do
+    resources :reviews, only: %i[new create]
+  end
   get 'users/:id/booking/', to: 'barbecues#booking', as: :booking
 end

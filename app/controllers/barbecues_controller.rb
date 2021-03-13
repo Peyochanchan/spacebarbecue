@@ -14,6 +14,7 @@ class BarbecuesController < ApplicationController
       lng: @barbecue.longitude,
       lat: @barbecue.latitude
     }
+    @reviews = @barbecue.reviews
   end
 
   def new

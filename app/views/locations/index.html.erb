@@ -30,8 +30,14 @@
             <p><span style="font-weight:bold">Status :</span> <%= loc.status %></p>
           </div>
           <div class="button">
-            <button id="sweet-alert" class="btn btn-info">Cancel</button>
-            <%= link_to "", location_path(loc), method: :delete, id: "delete", class: "hidden" %>
+            <% if loc.status == "accepted" %>
+              <div class="btn btn-info">
+                <%= link_to "Review", new_location_review_path(loc), id: "review", class: "hidden", style: "text-decoration:none; color:black;" %>
+              </div>
+            <% else %>
+              <button id="sweet-alert" class="btn btn-info">Cancel</button>
+              <%= link_to "", location_path(loc), method: :delete, id: "delete", class: "hidden" %>
+            <% end %>
           </div>
         </div>
       </div>

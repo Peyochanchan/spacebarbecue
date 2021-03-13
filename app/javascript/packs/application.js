@@ -61,6 +61,7 @@ document.addEventListener("turbolinks:load", function() {
       const link = document.querySelector('#book');
       link.click();
     }
+
   });
   initMapbox();
   flatpickr();
