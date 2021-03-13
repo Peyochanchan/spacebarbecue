@@ -15,7 +15,7 @@
           <%= cl_image_tag "#{loc.barbecue.photo.key}", class: "img-card" %>
         </div>
         <div class="card-left">
-          <h2><%= loc.barbecue.title %> </h2>
+          <h2><strong><%= loc.barbecue.title %></strong></h2>
           <p><%= loc.barbecue.description %></p>
           <p> Réservé du <strong><u> <%= loc.start_time %></u></strong> au <strong><u> <%= loc.end_time %> </u></strong> </p>
           <div class="card-my-reservations-owner">
