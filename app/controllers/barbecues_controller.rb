@@ -44,9 +44,6 @@ class BarbecuesController < ApplicationController
   end
 
   def booking
-    @start_time = params[:start_time]
-    @end_time = params[:end_time]
-    @location = Location.new
   end
 
   def search
