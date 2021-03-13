@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_many :barbecues
   has_many :locations
+  has_many :reviews
 end

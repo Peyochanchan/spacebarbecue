@@ -21,5 +21,15 @@
       <% end %>
     </div>
   </div>
-  <%= render 'map' %>
+  <div class="card-body col-6 border border-light shadow bg-body rounded" style="width: 18rem; margin-top: 5px !important;">
+    <div class="review_show">
+      <p class="review_title">Reviews<p>
+     <div class=content_review>
+        <% @reviews.each do |review| %>
+        <p><%= review.content %></p>
+        <p id="user_review"><%= review.user.first_name %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
